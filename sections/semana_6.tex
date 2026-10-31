@@ -157,7 +157,7 @@ consiste en extraer el conocimiento del experto humano
 	\label{tab:fases}
 	\centering
 	\small
-	\begin{tabular}{p{2.1cm}p{4.4cm}}
+	\begin{tabular}{L{2.5cm}L{4.6cm}}
 		\toprule
 		\textbf{Fase} & \textbf{Actividad principal} \\
 		\midrule
@@ -193,31 +193,118 @@ resultados obtenidos y las evidencias correspondientes.
 
 \subsubsection{Ejercicio 1: Revisi\'on de la gu\'ia para construir un Sistema Experto}
 
-\textbf{Objetivo.} Revisar y sintetizar la gu\'ia de construcci\'on de
-un SE, identificando cada fase y su producto entregable.
+\textbf{Objetivo.} Revisar y sintetizar la \emph{Gu\'ia r\'apida para
+construir un sistema experto} del Dr. Nicol\'as Kemper Valverde (CCADET,
+UNAM), estructurando su metodolog\'ia en un resumen conceptual y una
+s\'intesis de fases, actividades y productos entregables.
 
-\textbf{Desarrollo.} \TODO{Resumir con sus propias palabras la gu\'ia
-revisada y completar la Tabla~\ref{tab:guia} relacionando cada fase con
-la actividad realizada y su entregable.}
+\textbf{Desarrollo.} La gu\'ia aborda el dise\~no \'agil de la base de
+conocimiento de un sistema experto (SE), partiendo de la premisa de que
+su aplicaci\'on solo es eficiente cuando el dominio est\'a rigurosamente
+acotado. Kemper justifica la adopci\'on de un SE en seis beneficios clave:
+consistencia diagn\'ostica independiente del evaluador; habilitaci\'on de
+decisiones por personal no especializado; objetividad y eliminaci\'on de
+trato discriminatorio (criterios auditables); entrenamiento de personal
+novel; duplicabilidad del servicio en m\'ultiples sedes; y
+actualizaci\'on \'agil de pol\'iticas sin costos de readaptaci\'on.
+
+\paragraph{Resumen de la gu\'ia} El procedimiento propuesto consta de
+siete pasos secuenciales y c\'iclicos, ilustrados mediante un asistente
+de triaje para una Organizaci\'on de Servicios de Salud (HMO) de
+prepago:
+\begin{enumerate}
+	\item \emph{Descripci\'on del dominio:} Caracterizar el \'area y la
+	necesidad. En la HMO se busca contener costos del servicio de
+	ambulancias priorizando los casos cl\'inicos graves mediante triaje.
+	\item \emph{Aislar el \'area de desarrollo:} Delimitar la funci\'on de
+	\emph{servicio a miembros}, postergando deliberadamente otras \'areas
+	(facturaci\'on, padrones) para viabilizar el prototipo.
+	\item \emph{Decidir el objetivo del prototipo:} Asignar como meta un
+	asistente personal independiente de triaje. Se identifican tres
+	factores cr\'iticos: estado de membres\'ia (declaraci\'on y carnet
+	v\'alido), raz\'on de la visita (nuevo, seguimiento, info/otros) y
+	gravedad del problema (serio, no serio), con cinco posibles niveles
+	de recomendaci\'on de atenci\'on.
+	\item \emph{Crear el diagrama de dependencias:} Construir el modelo
+	en papel con factores (cajas), estados (tri\'angulos) y rectas
+	(variables y valores). Regla directriz: los tri\'angulos se numeran
+	\textbf{de derecha a izquierda} (desde la salida hacia las entradas),
+	ordenando la evaluaci\'on de reglas. Exige revisiones hacia el paso 2.
+	\item \emph{Crear las tablas de decisi\'on:} Generar por cada
+	tri\'angulo una tabla cuyo n\'umero de filas es el producto
+	cartesiano de las entradas ($2 \times 3 \times 2 = 12$ combinaciones).
+	Se subdividen los renglones ordenadamente para evaluar todas las
+	opciones sin omisiones antes de asignar la salida.
+	\item \emph{Escribir las reglas IF-THEN:} Traducir cada fila a
+	reglas l\'ogicas, compactando con \texttt{AND} y \texttt{OR} (12 filas
+	a 5 reglas). Kemper \textbf{desaconseja el uso de ELSE}: al evaluarse
+	en orden secuencial, genera cuestionamientos il\'ogicos (e.g., pedir
+	carnet a un no miembro); las condiciones negativas deben ser reglas
+	independientes.
+	\item \emph{Construir la interfaz de usuario:} Redactar mensajes de
+	inicio y cierre, y refinar las preguntas interactivas empleando las
+	palabras clave \texttt{ASK} (solicitar valor de variable al usuario) y
+	\texttt{CHOICES} (men\'u cerrado de valores v\'alidos).
+\end{enumerate}
+
+\paragraph{S\'intesis metodol\'ogica} La Tabla~\ref{tab:guia} sistematiza
+la articulaci\'on entre las seis fases de la ingenier\'ia del conocimiento,
+las actividades operativas de la gu\'ia y los productos entregables
+generados. El rasgo distintivo de la metodolog\'ia es su \emph{naturaleza
+c\'iclica e iterativa}: el modelado conceptual es reflexivo y creativo,
+mientras que la programaci\'on de reglas es puramente mec\'anica.
 
 \begin{table}[htbp]
 	\caption{S\'intesis de la gu\'ia de construcci\'on de un SE}
 	\label{tab:guia}
 	\centering
-	\small
-	\begin{tabular}{p{1.9cm}p{2.6cm}p{2.0cm}}
+	\footnotesize
+	\begin{tabular}{L{2.2cm}L{2.7cm}L{2.7cm}}
 		\toprule
 		\textbf{Fase} & \textbf{Actividad} & \textbf{Entregable} \\
 		\midrule
-		Identificaci\'on & \TODO{} & \TODO{} \\
-		Conceptualizaci\'on & \TODO{} & \TODO{} \\
-		Formalizaci\'on & \TODO{} & \TODO{} \\
-		Implementaci\'on & \TODO{} & \TODO{} \\
-		Validaci\'on & \TODO{} & \TODO{} \\
-		Mantenimiento & \TODO{} & \TODO{} \\
+		Identificaci\'on (Pasos 1--3) &
+		Caracterizar el dominio, aislar el \'area de miembros y fijar el
+		objetivo y los factores cr\'iticos. &
+		Documento de alcance, \'area delimitada y diagrama de bloques
+		conceptual. \\
+		Conceptualizaci\'on (Paso 4) &
+		Construir el diagrama de dependencias numerado de derecha a
+		izquierda. &
+		Modelo en papel: grafo de dependencias, variables, estados y
+		valores v\'alidos. \\
+		Formalizaci\'on (Pasos 5--6) &
+		Elaborar tablas de decisi\'on exhaustivas y traducirlas a reglas
+		\texttt{IF-THEN} compactadas (sin \texttt{ELSE}). &
+		Tablas de decisi\'on completas y base de conocimiento de reglas
+		de producci\'on. \\
+		Implementaci\'on (Paso 7) &
+		Dise\~nar preguntas con \texttt{ASK}/\texttt{CHOICES}, mensajes de
+		sesi\'on y codificar el motor. &
+		Prototipo interactivo ejecutable con interfaz de consulta y motor
+		de inferencia. \\
+		Validaci\'on &
+		Contrastar las respuestas en sesiones presenciales con el experto
+		y ajustar el modelo iterativamente. &
+		Protocolo de pruebas, registro de discrepancias y base de
+		conocimiento calibrada. \\
+		Mantenimiento &
+		Actualizar reglas ante nuevas pol\'iticas o normativas y
+		desplegar cambios uniformemente. &
+		Base de conocimiento versionada y registro hist\'orico de
+		modificaciones. \\
 		\bottomrule
 	\end{tabular}
 \end{table}
+
+\textbf{Resultado.} El estudio de la gu\'ia proporciona un marco formal y
+reproducible que influye directamente en los siguientes ejercicios: en el
+\textbf{Ejercicio~2}, el paso 4 fundamenta la revisi\'on y correcci\'on de
+dependencias y direccionalidad en el caso \emph{Analista de Red LAN}; en el
+\textbf{Ejercicio~3}, los pasos 5 a 7 estructuran las tablas, reglas y el
+motor por encadenamiento hacia adelante en Python; y en el
+\textbf{Ejercicio~4}, se aplica el ciclo completo de la metodolog\'ia para
+delimitar, formalizar y desplegar un SE m\'edico en Streamlit.
 
 \subsubsection{Ejercicio 2: Caso Analista de Red LAN -- correcci\'on del diagrama de dependencias}
 

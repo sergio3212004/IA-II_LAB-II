@@ -11,6 +11,13 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{float}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,positioning,arrows.meta}
+
+% Tipos de columna para tablas: texto alineado a la izquierda o centrado.
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
 \lstset{
 	basicstyle=\ttfamily\footnotesize,
@@ -28,11 +35,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Conference Paper Title*\\
-	{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-		should not be used}
-	\thanks{Identify applicable funding agency here. If none, delete this.}
-}
+\title{Informe de Laboratorio Unidad II}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Sergio David Percy Monge Muñoz}
 	\IEEEauthorblockA{\textit{Escuela de Ingeniería Informática} \\

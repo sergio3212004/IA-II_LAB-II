@@ -1,3 +1,8 @@
 aux/
 out/
 indent.log
+LABII.aux
+LABII.fdb_latexmk
+LABII.pdf
+LABII.log
+LABII.fls
